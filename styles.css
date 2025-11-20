@@ -183,10 +183,22 @@ body {
   padding: 80px 24px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+.panel + .panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 48px;
+  right: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.25), transparent);
+  opacity: 0.5;
 }
 
 .experience-panel {
@@ -233,7 +245,8 @@ body {
 }
 .experience-entry {
   position: relative;
-  padding: 0 0 0 28px;
+  padding: 0;
+  text-align: center;
 }
 .entry-date {
   font-family: "Futura", "Trebuchet MS", sans-serif;
@@ -251,18 +264,6 @@ body {
 }
 .experience-entry:not(:last-child) {
   margin-bottom: 16px;
-}
-.experience-entry::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: #fff;
-  box-shadow: 0 0 0 6px rgba(255, 212, 189, 0.5);
 }
 
 .education-panel {
@@ -336,18 +337,6 @@ body {
 }
 .education-entry:not(:last-child) {
   margin-bottom: 24px;
-}
-.education-entry::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: #fff;
-  box-shadow: 0 0 0 6px rgba(255, 212, 189, 0.5);
 }
 
 .contact-panel {
@@ -598,6 +587,10 @@ body {
   min-height: 100vh;
 }
 
+.max-vh-100 {
+  max-height: 100vh;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -608,4 +601,8 @@ body {
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+.text-center {
+  text-align: center;
 }
