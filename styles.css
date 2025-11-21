@@ -1,16 +1,5 @@
-/* styles.css - Responsive landing section
-   Notes:
-   - Background color: light violet
-   - Font: Monotype Baskerville (fallbacks provided)
-   - Hero image currently references /mnt/data/Screenshot (747).png
-   - Side dots show label on hover (fast fade-in)
-*/
-
 :root {
   --bg: #efe6ff; /* light violet */
-  --accent: #111;
-  --muted: rgba(17, 17, 17, 0.65);
-  --max-width: 1100px;
 }
 
 * {
@@ -21,7 +10,6 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Futura", "Trebuchet MS", sans-serif;
-  color: var(--accent);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,8 +18,9 @@ body {
 .site-header {
   position: fixed;
   top: 16px;
+  left: 25%;
+  transform: translate(-50%, 0%);
   z-index: 50;
-  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -40,9 +29,10 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 28px;
+  gap: 32px;
   align-items: center;
 }
+
 .nav a {
   color: var(--muted);
   text-decoration: none;
@@ -50,59 +40,11 @@ body {
   opacity: 0.95;
 }
 .nav a.active {
-  color: var(--accent);
   font-weight: 500;
-}
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  /* padding:80px 24px; */
-  /* background-image: url("bg.jpg");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 80% 50%; */
-}
-
-/* full-bleed image occupying the right side */
-.hero-image {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60%;
-  height: 70%;
-  max-width: 900px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 4px;
-  box-shadow: 0 0 0 100vmax var(--bg) inset; /* creates the effect of image sitting on colored background */
-  transition: transform 0.8s ease;
-}
-
-/* overlay to soften image contrast */
-.hero-overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  pointer-events: none;
 }
 
 /* text block on the left */
 .hero-content {
-  position: relative;
-  /* z-index: 5; */
-  /* max-width: 38%; */
-  text-align: left;
-  /* margin-left: 6%; */
   animation: fadeInUp 0.9s ease both;
 }
 
@@ -112,10 +54,6 @@ body {
   margin: 0;
   font-weight: 600;
   letter-spacing: 0.6px;
-}
-
-.surname {
-  display: block;
 }
 
 .role {
@@ -128,53 +66,56 @@ body {
 /* Side dots */
 .side-dots {
   position: fixed;
-  right: 28px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 16px;
-  z-index: 60;
+  z-index: 60000;
   align-items: flex-end;
 }
 
 .dot {
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--bs-dark);
   background: transparent;
   position: relative;
   cursor: pointer;
-  transition: background 0.12s ease, transform 0.12s ease;
+  transition: background 0.1s ease, transform 0.1s ease;
 }
 
 .dot::after {
   content: attr(data-label);
   position: absolute;
-  right: 28px;
+  left: 32px;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent;
-  padding: 6px 10px;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+  border-radius: 4px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  font-size: 14px;
-  color: var(--accent);
-  transition: opacity 0.12s ease, transform 0.12s ease;
+  font-size: 12px;
+  color: var(--bs-dark);
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
 /* hover/focus state */
 .dot:hover,
 .dot:focus {
-  background: var(--accent);
-  transform: scale(1.02);
+  transform: scale(1.2);
+  background: var(--bs-dark);
 }
 .dot:hover::after {
   opacity: 1;
-  transform: translateY(-50%) translateX(-6px);
+  transform: translateY(-50%) translateX(-8px);
 }
 
 /* Panels below hero */
@@ -197,7 +138,12 @@ body {
   left: 48px;
   right: 48px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.25), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(17, 17, 17, 0.25),
+    transparent
+  );
   opacity: 0.5;
 }
 
@@ -222,24 +168,8 @@ body {
   gap: 42px;
   position: relative;
 }
-/* .experience-card::after {
-  content: "";
-  position: absolute;
-  top: 24px;
-  bottom: 24px;
-  left: 26px;
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 212, 189, 0) 0%,
-    rgba(255, 212, 189, 0.8) 60%,
-    rgba(255, 212, 189, 0) 100%
-  );
-  pointer-events: none;
-} */
 .experience-title {
   font-size: 42px;
-  margin: 0 auto 16px;
   font-style: italic;
 }
 .experience-entry {
@@ -257,7 +187,6 @@ body {
   font-size: 18px;
   line-height: 1.7;
   margin: 0;
-  color: var(--accent);
 }
 .experience-entry:not(:last-child) {
   margin-bottom: 16px;
@@ -284,25 +213,8 @@ body {
   gap: 42px;
   position: relative;
 }
-/* .education-card::after {
-  content: "";
-  position: absolute;
-  top: 28px;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 212, 189, 0) 0%,
-    rgba(255, 212, 189, 0.8) 60%,
-    rgba(255, 212, 189, 0) 100%
-  );
-  pointer-events: none;
-} */
 .education-title {
   font-size: 42px;
-  margin: 0 auto 16px;
   font-style: italic;
 }
 .education-entry {
@@ -319,7 +231,6 @@ body {
 .education-institution {
   font-size: 18px;
   letter-spacing: 0.8px;
-  color: var(--accent);
   margin: 0 0 6px;
 }
 .education-body {
@@ -355,7 +266,6 @@ body {
 }
 .contact-title {
   font-size: 42px;
-  margin: 0;
   font-style: italic;
 }
 .contact-line {
@@ -371,21 +281,20 @@ body {
   margin-top: 12px;
 }
 .contact-socials .social-icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  border: 1px solid;
+
   transition: background 0.3s ease, border-color 0.3s ease;
   text-decoration: none;
 }
 .contact-socials .social-icon svg {
   width: 18px;
   height: 18px;
-  fill: var(--accent);
 }
 .contact-socials .social-icon:focus-visible,
 .contact-socials .social-icon:hover {
@@ -433,16 +342,11 @@ body {
   padding: 14px 24px;
   font-size: 16px;
   border-radius: 4px;
-  border: 2px solid var(--accent);
+  border: 2px solid;
   background: #111;
   color: #fff;
   cursor: pointer;
   transition: background 0.3s ease, border-color 0.3s ease;
-}
-.contact-submit:hover,
-.contact-submit:focus-visible {
-  background: var(--accent);
-  border-color: var(--accent);
 }
 .about-panel {
   min-height: 90vh;
@@ -457,8 +361,6 @@ body {
 }
 .about-title {
   font-size: 48px;
-  margin: 0 0 36px;
-  color: var(--accent);
   font-style: italic;
 }
 .about-paragraph {
@@ -470,7 +372,6 @@ body {
 .about-highlight {
   font-weight: 700;
   margin-bottom: 0;
-  color: var(--accent);
 }
 
 /* fade-in animation */
@@ -500,95 +401,10 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .site-header {
-    left: 50%;
-  }
-  .hero {
-    padding: 40px 16px;
-    align-items: flex-end;
-    min-height: 90vh;
-  }
-  .hero-image {
-    position: relative;
-    width: 100%;
-    height: 48vh;
-    transform: none;
-    order: 2;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .hero-content {
-    max-width: 100%;
-    margin: 0 0 18px 0;
-    padding: 0;
-    text-align: left;
-    order: 1;
-  }
-  .name {
-    font-size: 36px;
-  }
-  .role {
-    font-size: 15px;
-  }
-  .side-dots {
-    right: 12px;
-  }
-}
-
-.d-flex {
-  display: flex;
-}
-
-.w-50 {
-  width: 50%;
-}
-
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.rounded {
-  border-radius: 8px;
-}
-
-.shadow {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.min-vh-100 {
-  min-height: 100vh;
-}
-
 .max-vh-100 {
   max-height: 100vh;
 }
 
-.w-100 {
-  width: 100%;
-}
-
-.h-100 {
-  height: 100%;
-}
-
 .object-fit-cover {
   object-fit: cover;
-}
-
-.text-center {
-  text-align: center;
 }
