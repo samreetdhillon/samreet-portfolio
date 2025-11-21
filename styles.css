@@ -8,7 +8,7 @@
 html,
 body {
   height: 100%;
-  margin: 0;
+
   font-family: "Futura", "Trebuchet MS", sans-serif;
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -26,7 +26,7 @@ body {
 
 .nav ul {
   list-style: none;
-  margin: 0;
+
   padding: 0;
   display: flex;
   gap: 32px;
@@ -36,7 +36,7 @@ body {
 .nav a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 16px;
+
   opacity: 0.95;
 }
 .nav a.active {
@@ -51,14 +51,14 @@ body {
 .name {
   font-size: 72px;
   line-height: 0.9;
-  margin: 0;
+
   font-weight: 600;
   letter-spacing: 0.6px;
 }
 
 .role {
   margin-top: 18px;
-  font-size: 18px;
+
   color: var(--muted);
   letter-spacing: 1px;
 }
@@ -118,162 +118,28 @@ body {
   transform: translateY(-50%) translateX(-8px);
 }
 
-/* Panels below hero */
-.panel {
-  min-height: 80vh;
-  padding: 80px 24px;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
-.panel + .panel::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 48px;
-  right: 48px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(17, 17, 17, 0.25),
-    transparent
-  );
-  opacity: 0.5;
-}
-
-.experience-panel {
-  min-height: 100vh;
-  padding: 120px 24px 96px;
-  align-items: flex-start;
-  justify-content: center;
-}
-.experience-content {
-  max-width: 720px;
-  width: 100%;
-}
-.experience-card {
-  border: 2px solid rgba(255, 212, 189, 0.8);
-  padding: 64px 48px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 18px 45px rgba(17, 17, 17, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-  position: relative;
-}
 .experience-title {
   font-size: 42px;
   font-style: italic;
 }
-.experience-entry {
-  position: relative;
-  padding: 0;
-  text-align: center;
-}
-.entry-date {
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: var(--muted);
-  margin: 0 0 6px;
-}
-.entry-body {
-  font-size: 18px;
-  line-height: 1.7;
-  margin: 0;
-}
-.experience-entry:not(:last-child) {
-  margin-bottom: 16px;
-}
 
-.education-panel {
-  min-height: 100vh;
-  padding: 120px 24px 96px;
-  align-items: flex-start;
-  justify-content: center;
-}
-.education-content {
-  max-width: 720px;
-  width: 100%;
-}
-.education-card {
-  border: 2px solid rgba(255, 212, 189, 0.8);
-  padding: 64px 48px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 18px 45px rgba(17, 17, 17, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-  position: relative;
-}
 .education-title {
   font-size: 42px;
   font-style: italic;
 }
-.education-entry {
-  position: relative;
-  padding: 0 0 0 28px;
-  text-align: center;
-}
-.education-date {
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: var(--muted);
-  margin: 0 0 6px;
-}
-.education-institution {
-  font-size: 18px;
-  letter-spacing: 0.8px;
-  margin: 0 0 6px;
-}
-.education-body {
-  font-size: 18px;
-  line-height: 1.7;
-  margin: 0;
-  color: var(--muted);
-}
-.education-entry:not(:last-child) {
-  margin-bottom: 24px;
-}
 
-.contact-panel {
-  min-height: 110vh;
-  padding: 120px 24px 96px;
-  align-items: flex-start;
-  justify-content: center;
-}
-.contact-content {
-  max-width: 720px;
-  width: 100%;
-}
-.contact-card {
-  border: 2px solid rgba(255, 212, 189, 0.8);
-  padding: 64px 48px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 18px 45px rgba(17, 17, 17, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
 .contact-title {
   font-size: 42px;
   font-style: italic;
 }
 .contact-line {
-  font-size: 18px;
-  margin: 0;
   color: var(--muted);
   text-align: center;
-  line-height: 1.6;
 }
 .contact-socials {
   display: flex;
@@ -281,8 +147,8 @@ body {
   margin-top: 12px;
 }
 .contact-socials .social-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -323,7 +189,7 @@ body {
   width: 100%;
   border: 1px solid rgba(17, 17, 17, 0.25);
   padding: 12px 14px;
-  font-size: 16px;
+
   border-radius: 4px;
   background: #fff;
 }
@@ -340,7 +206,7 @@ body {
   margin-top: 10px;
   grid-column: 1/-1;
   padding: 14px 24px;
-  font-size: 16px;
+
   border-radius: 4px;
   border: 2px solid;
   background: #111;
@@ -364,7 +230,6 @@ body {
   font-style: italic;
 }
 .about-paragraph {
-  font-size: 18px;
   line-height: 1.8;
   margin: 0 0 28px;
   color: var(--muted);
@@ -407,4 +272,16 @@ body {
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+/* Hide scrollbar while maintaining scroll functionality */
+.overflow-scroll {
+  /* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+.overflow-scroll::-webkit-scrollbar {
+  display: none; /* Webkit browsers */
 }

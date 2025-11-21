@@ -4,6 +4,40 @@
 */
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Get the scrollable left panel
+  const leftPanel = document.querySelector(".content-container");
+
+  // Redirect all wheel/scroll events to the left panel
+  document.addEventListener(
+    "wheel",
+    function (e) {
+      e.preventDefault();
+      leftPanel.scrollTop += e.deltaY;
+    },
+    { passive: false }
+  );
+
+  // Handle touch events for mobile
+  let touchStartY = 0;
+  document.addEventListener(
+    "touchstart",
+    function (e) {
+      touchStartY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    function (e) {
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchY;
+      leftPanel.scrollTop += deltaY;
+      touchStartY = touchY;
+    },
+    { passive: true }
+  );
+
   // Smooth scroll for nav links
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener("click", function (e) {
@@ -22,22 +56,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Make the active top nav link reflect current scroll position
+  // Update active nav link based on scroll position of left panel
   const navLinks = document.querySelectorAll(".nav a");
-  const sections = Array.from(document.querySelectorAll("main section"));
+  const sections = Array.from(document.querySelectorAll("[id]")).filter((el) =>
+    ["home", "about", "experience", "education", "contact"].includes(el.id)
+  );
+
   function onScroll() {
-    const pos = window.scrollY + window.innerHeight / 3;
+    const scrollTop = leftPanel.scrollTop;
     let current = sections[0];
-    for (const s of sections) {
-      if (s.offsetTop <= pos) current = s;
+
+    for (const section of sections) {
+      if (section.offsetTop <= scrollTop + 100) {
+        current = section;
+      }
     }
-    navLinks.forEach((l) =>
-      l.classList.toggle(
-        "active",
-        document.querySelector(l.getAttribute("href")) === current
-      )
-    );
+
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      const isActive = href === `#${current.id}`;
+      link.classList.toggle("active", isActive);
+    });
   }
-  window.addEventListener("scroll", onScroll);
+
+  leftPanel.addEventListener("scroll", onScroll);
   onScroll();
 });
