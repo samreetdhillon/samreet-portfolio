@@ -285,3 +285,25 @@ body {
 .overflow-scroll::-webkit-scrollbar {
   display: none; /* Webkit browsers */
 }
+
+/* CSS Scroll Snapping */
+.content-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.content {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* CSS Scroll Snapping */
+.content-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.content {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}

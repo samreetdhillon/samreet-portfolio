@@ -1,68 +1,16 @@
 /* script.js
- - Smooth scrolling for navigation
- - Side dots hover label already handled by CSS; we implement click-to-scroll
+ - Navigation and active link updates
+ - CSS scroll-snap handles section snapping automatically
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Get the scrollable left panel
+  // Get the scrollable left panel and all content sections
   const leftPanel = document.querySelector(".content-container");
-
-  // Redirect all wheel/scroll events to the left panel
-  document.addEventListener(
-    "wheel",
-    function (e) {
-      e.preventDefault();
-      leftPanel.scrollTop += e.deltaY;
-    },
-    { passive: false }
-  );
-
-  // Handle touch events for mobile
-  let touchStartY = 0;
-  document.addEventListener(
-    "touchstart",
-    function (e) {
-      touchStartY = e.touches[0].clientY;
-    },
-    { passive: true }
-  );
-
-  document.addEventListener(
-    "touchmove",
-    function (e) {
-      const touchY = e.touches[0].clientY;
-      const deltaY = touchStartY - touchY;
-      leftPanel.scrollTop += deltaY;
-      touchStartY = touchY;
-    },
-    { passive: true }
-  );
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-
-  // Side dots click -> scroll
-  document.querySelectorAll(".side-dots .dot").forEach(function (dot) {
-    dot.addEventListener("click", function () {
-      const targetSel = this.dataset.target;
-      const target = document.querySelector(targetSel);
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-
-  // Update active nav link based on scroll position of left panel
+  const sections = Array.from(document.querySelectorAll(".content"));
   const navLinks = document.querySelectorAll(".nav a");
-  const sections = Array.from(document.querySelectorAll("[id]")).filter((el) =>
-    ["home", "about", "experience", "education", "contact"].includes(el.id)
-  );
 
-  function onScroll() {
+  // Update active navigation links based on scroll position
+  function updateActiveNav() {
     const scrollTop = leftPanel.scrollTop;
     let current = sections[0];
 
@@ -79,6 +27,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  leftPanel.addEventListener("scroll", onScroll);
-  onScroll();
+  // Handle navigation clicks
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  // Handle side dots clicks
+  document.querySelectorAll(".side-dots .dot").forEach(function (dot) {
+    dot.addEventListener("click", function () {
+      const targetSel = this.dataset.target;
+      const target = document.querySelector(targetSel);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  // Listen for scroll events to update navigation
+  leftPanel.addEventListener("scroll", updateActiveNav);
+
+  // Initialize
+  updateActiveNav();
 });
