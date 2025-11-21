@@ -20,7 +20,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: "Monotype Baskerville", "Baskerville", Georgia, serif;
+  font-family: "Futura", "Trebuchet MS", sans-serif;
   color: var(--accent);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -238,7 +238,6 @@ body {
   pointer-events: none;
 } */
 .experience-title {
-  font-family: "Monotype Baskerville", "Baskerville", Georgia, serif;
   font-size: 42px;
   margin: 0 auto 16px;
   font-style: italic;
@@ -249,14 +248,12 @@ body {
   text-align: center;
 }
 .entry-date {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 16px;
   letter-spacing: 0.4px;
   color: var(--muted);
   margin: 0 0 6px;
 }
 .entry-body {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 18px;
   line-height: 1.7;
   margin: 0;
@@ -304,7 +301,6 @@ body {
   pointer-events: none;
 } */
 .education-title {
-  font-family: "Monotype Baskerville", "Baskerville", Georgia, serif;
   font-size: 42px;
   margin: 0 auto 16px;
   font-style: italic;
@@ -315,21 +311,18 @@ body {
   text-align: center;
 }
 .education-date {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 16px;
   letter-spacing: 0.4px;
   color: var(--muted);
   margin: 0 0 6px;
 }
 .education-institution {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 18px;
   letter-spacing: 0.8px;
   color: var(--accent);
   margin: 0 0 6px;
 }
 .education-body {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 18px;
   line-height: 1.7;
   margin: 0;
@@ -361,13 +354,11 @@ body {
   align-items: center;
 }
 .contact-title {
-  font-family: "Monotype Baskerville", "Baskerville", Georgia, serif;
   font-size: 42px;
   margin: 0;
   font-style: italic;
 }
 .contact-line {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 18px;
   margin: 0;
   color: var(--muted);
@@ -412,7 +403,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 13px;
   color: var(--muted);
 }
@@ -424,7 +414,6 @@ body {
   width: 100%;
   border: 1px solid rgba(17, 17, 17, 0.25);
   padding: 12px 14px;
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 16px;
   border-radius: 4px;
   background: #fff;
@@ -442,7 +431,6 @@ body {
   margin-top: 10px;
   grid-column: 1/-1;
   padding: 14px 24px;
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 16px;
   border-radius: 4px;
   border: 2px solid var(--accent);
@@ -468,14 +456,12 @@ body {
   text-align: center;
 }
 .about-title {
-  font-family: "Monotype Baskerville", "Baskerville", Georgia, serif;
   font-size: 48px;
   margin: 0 0 36px;
   color: var(--accent);
   font-style: italic;
 }
 .about-paragraph {
-  font-family: "Futura", "Trebuchet MS", sans-serif;
   font-size: 18px;
   line-height: 1.8;
   margin: 0 0 28px;
